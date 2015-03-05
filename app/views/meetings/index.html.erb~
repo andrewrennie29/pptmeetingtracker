@@ -1,0 +1,44 @@
+<title>UK PPT Meeting Tracker</title>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-8">
+
+<div class="jumbotron">
+  <h1>PPT Meeting Tracker</h1>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Start a meeting</a></p>
+</div>
+
+<hr>
+
+<% if !flash[:error].nil? %>
+
+  <div class="alert alert-danger">
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+    <%= flash[:error] %>
+
+  </div>
+
+<% end %>
+
+<% if flash[:success] %>
+
+  <div class="alert alert-success">
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+    <%= flash[:success] %>
+
+  </div>
+
+<% end %>
+
+</div> <!-- span12 -->
+
+</div> <!-- row -->
+
+</div> <!-- container -->

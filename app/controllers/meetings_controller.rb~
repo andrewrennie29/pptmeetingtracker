@@ -1,0 +1,15 @@
+class MeetingsController < ApplicationController
+
+def index
+  
+  render :index
+
+end
+
+def start
+
+  @meeting=Meeting.new
+
+end
+
+end
