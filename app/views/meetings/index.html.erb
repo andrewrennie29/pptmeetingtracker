@@ -6,13 +6,21 @@
 
 <div class="col-lg-12">
 
+<% if session[:activemeetingid].nil? %>
+
 <div class="jumbotron">
   <h1>PPT Meeting Tracker</h1>
   <p>Welcome to the PPT Meeting Tracker. This is a tool to capture actions from the various labour planning meetings that occur across each of the UK FCs each week.</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Start a meeting</a></p>
+  <p><%= link_to "Start New Meeting", new_meeting_path, remote: true, class: "btn btn-primary btn-lg" %></p>
 </div>
 
-<hr>
+<% else %>
+
+<%= render "index" %>
+
+<% render "attendees/index" %>
+
+<% end %>
 
 <% if !flash[:error].nil? %>
 
@@ -37,6 +45,12 @@
   </div>
 
 <% end %>
+
+<div id="meeting-modal" class="modal fade">
+<div class="modal-dialog">
+<div id="inner-meeting-modal" class="modal-content"></div>
+</div>
+</div>
 
 </div> <!-- span12 -->
 

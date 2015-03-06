@@ -1,0 +1,35 @@
+<%= form_for @meeting, remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |f| %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
+
+    <div class="control-group">
+      <%= f.label :FC, class:"control-label" %>
+      <div class="controls">
+        <%= f.text_field :fc %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :meetingtype, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :meetingtype %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :meetingdate, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :meetingdate, :value => Date.today %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :'Batch ID', class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :batchid, :value => "Labor Plan - " %>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+  </div>
+<% end %>
