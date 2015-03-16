@@ -1,0 +1,4 @@
+class Changetemplatestabledetails < ActiveRecord::Migration
+  def change
+  end
+end

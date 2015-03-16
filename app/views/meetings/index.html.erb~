@@ -11,14 +11,16 @@
 <div class="jumbotron">
   <h1>PPT Meeting Tracker</h1>
   <p>Welcome to the PPT Meeting Tracker. This is a tool to capture actions from the various labour planning meetings that occur across each of the UK FCs each week.</p>
-  <p><%= link_to "Start New Meeting", new_meeting_path, remote: true, class: "btn btn-primary btn-lg" %></p>
+  <p><%= link_to "Start New Meeting", new_meeting_path, remote: true, class: "btn btn-primary btn-lg" %>  <%= link_to "Continue Meeting", continue_meeting_path, remote: true, class: "btn btn-primary btn-lg" %>  <%= link_to "Setup New Template", new_template_path, remote: true, class: "btn btn-primary btn-lg" %></p>
 </div>
 
 <% else %>
 
-<%= render "attendees" %>
+<%= render "index" %>
 
-<% end %>
+<%= render "attendees/index" %>
+
+<%= render "notes/form" %>
 
 <% if !flash[:error].nil? %>
 
@@ -44,10 +46,32 @@
 
 <% end %>
 
+<%= render "notes/attrition" %>
+
+<%= render "notes/attendance" %>
+
+<%= render "notes/productivity" %>
+
+<%= render "notes/aob" %>
+
+<% end %>
+
 <div id="meeting-modal" class="modal fade">
-<div class="modal-dialog">
-<div id="inner-meeting-modal" class="modal-content"></div>
+	<div class="modal-dialog">
+		<div id="inner-meeting-modal" class="modal-content"></div>
+	</div>
 </div>
+
+<div id="continue-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div id="inner-continue-modal" class="modal-content"></div>
+	</div>
+</div>
+
+<div id="template-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div id="inner-template-modal" class="modal-content"></div>
+	</div>
 </div>
 
 </div> <!-- span12 -->

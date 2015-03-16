@@ -1,0 +1,4 @@
+class AddAssignedToDueDateToNotes < ActiveRecord::Migration
+  def change
+  end
+end

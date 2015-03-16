@@ -1,1 +1,5 @@
+<%= unless session[:activemeetingid].nil? %>
 <%= @meeting.fc %> <%= @meeting.meetingtype %>
+
+<% render "attendees" %>
+<% end %>

@@ -1,2 +1,4 @@
-$("#product-modal").html("<%= escape_javascript(render 'new') %>")
-$("#product-modal").modal("show")
+$("#inner-meeting-modal").html("<%= escape_javascript(render 'new') %>");
+$("#meeting-modal").modal("show");
+$('#newmeeting').click ->
+   $('#meeting-modal').modal('hide');

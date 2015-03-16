@@ -1,0 +1,27 @@
+<%= form_tag('/templates/create', remote: true, html: { class: "form-horizontal", style: "display:inline;" }) do %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
+
+    <div class="input-group">
+      <span class="input-group-addon" id="labelmeetingtype"><span class="glyphicon glyphicon-file" aria-hidden="true"></span></span>
+      <%= text_field_tag :meetingtype, nil, {class: 'form-control', placeholder: 'Meeting Type', id: 'meetingtype'} %>
+    </div>
+
+<p>
+    <div class="input-group">
+      <span class="input-group-addon" id="labelattendees"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+      <%= text_field_tag :attendees, nil, {class: 'form-control', placeholder: 'Enter attendees separated by a comma', id: 'attendees'} %>
+    </div>
+
+<p>
+    <div class="input-group">
+      <span class="input-group-addon" id="meetingcategories"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></span>
+      <%= text_field_tag :categories, nil, {class: 'form-control', placeholder: 'Enter categories separated by a comma', id: 'categories'} %>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <%= submit_tag "Create Template", class: "btn btn-primary" %>
+    <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+  </div>
+<% end %>

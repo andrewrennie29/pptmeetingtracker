@@ -1,4 +1,4 @@
-<%= form_for @meeting, remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |f| %>
+<%= form_tag, remote: true, html: { class: "form-horizontal", style: "display:inline;" } %>
   <div class="modal-body">
     <ul class="errors"></ul>
 
@@ -11,7 +11,7 @@
     <div class="control-group">
       <%= f.label :meetingtype, class: "control-label" %>
       <div class="controls">
-        <%= f.collection_select :meetingtype, Templates.select(:meetingtype).distinct, :meetingtype, :meetingtype %>
+        <%= f.text_field :meetingtype %>
       </div>
     </div>
     <div class="control-group">

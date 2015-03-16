@@ -1,0 +1,12 @@
+<%= form_tag('/continue', remote: true, html: { class: "form-horizontal", style: "display:inline;" }) do %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
+
+    <%= @fcs.id(1) %>
+
+  </div>
+  <div class="modal-footer">
+    
+    <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+  </div>
+<% end %>

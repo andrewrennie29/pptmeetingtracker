@@ -1,16 +1,29 @@
 Rails.application.routes.draw do
 
-  resources :meetings do
-    get "delete"
-  end
-
-  root to: "meetings#index"
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  
+
+  match '/meetings/endmeeting' =>  'meetings#endmeeting', :via => [:get], :as => :endmeeting
+  match '/meetings/continue' =>  'meetings#continue', :via => [:get], :as => :continue_meeting
+  match '/templates/create' => 'templates#create', :via => :post
+  post '/attendees/create' => 'attendees#create', :via => :post
+
+  resources :meetings do
+    get "delete"
+  end
+
+  resources :templates do
+    get "delete"
+  end
+
   root 'meetings#index'
+
+  resources :attendees do
+    get "delete"
+  end  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

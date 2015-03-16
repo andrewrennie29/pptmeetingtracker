@@ -1,0 +1,14 @@
+<p>
+
+<% if session[:showattrition]==false %>
+  <h4>
+  <button type="button" class="btn btn-default btn-xs">
+  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> Attrition</h4>
+
+<% else %>
+  <h4>
+  <button type="button" class="btn btn-default btn-xs">
+  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> Attrition</h4>
+  
+
+<% end %>

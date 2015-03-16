@@ -1,0 +1,5 @@
+class Addtotemplatesmeetingtype < ActiveRecord::Migration
+  def change
+    add_column :templates, :meetingtype, :string
+  end
+end

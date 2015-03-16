@@ -1,0 +1,36 @@
+<%= form_for @attendees, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
+
+    <% @attendees.each do |a| %>
+    
+    <div class="control-group">
+      <%= f.label :Dept, class:"control-label" %>
+      <div class="controls">
+        <%= f.dept :dept %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :Attendance, class: "control-label" %>
+      <div class="controls">
+        <%= f.checkbox :attendance %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :Proxy, class: "control-label" %>
+      <div class="controls">
+        <%= f.checkbox :proxy %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :Attendees, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :attendees %>
+      </div>
+    </div>
+    
+   <% end %>
+
+  </div>
+  <div class="modal-footer">
+    <%= f.submit class: "btn btn-primary", :id => "saveattendees" %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_tag('/attendees/create', method: :patch, remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
+
+    <% unless @attendees.nil? %>
+		  <% @attendees.each do |a| %>
+		  
+				<div class="control-group">
+				  <%= label :Dept, class:"control-label" %>
+				  <div class="controls">
+				    <%= text_field_tag :dept %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :Attendance, class: "control-label" %>
+				  <div class="controls">
+				    <%= checkbox_tag :attendance %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :Proxy, class: "control-label" %>
+				  <div class="controls">
+				    <%= checkbox_tag :proxy %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :Attendees, class: "control-label" %>
+				  <div class="controls">
+				    <%= text_field_tag :attendees %>
+				  </div>
+				</div>
+   
+   		<% end %>
+		<% else %>
+		
+			<h4>Please generate your attendees</h4>
+		
+		<% end %>
+    <%= submit_tag "Generate Attendees", class: "btn btn-primary btn-sm" %>
+<% end %>
