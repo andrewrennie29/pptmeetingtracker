@@ -31,7 +31,6 @@ respond_to :html, :js
     session[:activemeetingid] = @meeting.id
     session[:meetingtype] = @meeting.meetingtype
 			
-		end	
   end
 
   def edit

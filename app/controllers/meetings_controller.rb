@@ -29,7 +29,7 @@ respond_to :html, :js
     @meetings = Meeting.all
     @meeting = Meeting.create(meeting_params)
     session[:activemeetingid] = @meeting.id
-    session[:meetingtype] = @meeting.meetingtype
+    session[:activemeetingtype] = @meeting.meetingtype
 			
   end
 

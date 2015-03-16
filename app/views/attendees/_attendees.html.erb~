@@ -1,4 +1,4 @@
-<%= form_tag('/attendees/create', method: patch, remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
+<%= form_tag('/attendees/create', method: :patch, remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
 
     <% unless @attendees.nil? %>
 		  <% @attendees.each do |a| %>

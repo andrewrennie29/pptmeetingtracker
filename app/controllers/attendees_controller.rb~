@@ -26,9 +26,8 @@ respond_to :html, :js
 
 		@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
 		
-		if @attendees.nil?
-			@meetingtype=Meetings.select(:meetingtype).where('meetingid = ?', session[:activemeetingid])
-			@attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", @meetingtype)
+		if @attendees.count==0
+			@attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", session[:activemeetingtype])
 			
 			@attendeetemplates.each do |a|
 			
@@ -37,8 +36,6 @@ respond_to :html, :js
 			end
 			
 			@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
-			
-			redirect_to '/'
 			
 		end
 
