@@ -4,21 +4,20 @@ respond_to :html, :js
 
   def index
 		
-		@attendees = Attendee.where('meetingid = ?', session[:activemeetingid])
+		@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
 		
-		if @attendees.nil?
-			@meetingtype=Meeting.select(:meetingtype).where('meetingid = ?', session[:activemeetingid])
-			@attendeetemplates = Template.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", @meetingtype)
+		if @attendees.count==0
+			@attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", session[:activemeetingtype])
 			
 			@attendeetemplates.each do |a|
 			
-				@attendee=Attendee.create(meetingid: session[:activemeetingid], dept: a.notedetails)
+				@attendee=Attendees.create(meetingid: session[:activemeetingid], dept: a.notedetails)
 			
 			end
 			
-			@attendees = Attendee.where('meetingid = ?', session[:activemeetingid])
+			@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
 			
-		end	
+		end
  		
   end
 

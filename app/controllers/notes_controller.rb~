@@ -6,6 +6,9 @@ class NotesController < ApplicationController
   
   def create
     note=Note.new
+
+    flash[:notice] = "Your comment was added."
+    redirect_to article_path(article)
   end
 
 end

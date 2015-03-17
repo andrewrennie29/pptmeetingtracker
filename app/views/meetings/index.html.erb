@@ -18,10 +18,6 @@
 
 <%= render "index" %>
 
-<%= render "attendees/attendees" %>
-
-<%= render "notes/form" %>
-
 <% if !flash[:error].nil? %>
 
   <div class="alert alert-danger">
@@ -46,14 +42,19 @@
 
 <% end %>
 
-<%= render "notes/attrition" %>
+<br></br>
+<div class='col-md-12'>
+<h4>Attendees</h4>
+	<%= render "attendees/attendees" %>
+</div>
+<br></br>
 
-<%= render "notes/attendance" %>
 
-<%= render "notes/productivity" %>
 
-<%= render "notes/aob" %>
-
+<div class='col-md-12'>
+	<h5>Add a note</h5>
+	<%= render partial: 'notes/form', locals: {notes: @note} %>
+</div>
 <% end %>
 
 <div id="meeting-modal" class="modal fade">

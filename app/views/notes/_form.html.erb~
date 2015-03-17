@@ -1,0 +1,32 @@
+<div class="form-group">
+<%= form_for notes, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
+	
+	
+	<div class="control-group">
+				  <%= label :notetype, :class => 'control-label' %>
+				  <div class="controls">
+				    <%= text_field :notetype %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :notetag, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field :notetag %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :details, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field :details %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :assignedto, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field :assignedto %>
+				  </div>
+				</div>
+ 
+	<%= f.submit "Save", :id => 'post_comment' %>
+<% end %>
+		</div>

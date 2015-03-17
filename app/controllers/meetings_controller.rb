@@ -9,6 +9,10 @@ respond_to :html, :js
 
       @meeting = Meeting.find_by_id(session[:activemeetingid])
 			
+			@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
+			
+			@note=Notes.create(:meetingid => session[:activemeetingid], :notetype => 'test', :notetag => 'test')
+			
     end
 
   end
@@ -30,6 +34,14 @@ respond_to :html, :js
     @meeting = Meeting.create(meeting_params)
     session[:activemeetingid] = @meeting.id
     session[:activemeetingtype] = @meeting.meetingtype
+    
+    @attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", session[:activemeetingtype])
+			
+			@attendeetemplates.each do |a|
+			
+				@attendee=Attendees.create(meetingid: session[:activemeetingid], dept: a.notedetails)
+			
+			end
 			
   end
 

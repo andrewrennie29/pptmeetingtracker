@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   match '/meetings/endmeeting' =>  'meetings#endmeeting', :via => [:get], :as => :endmeeting
   match '/meetings/continue' =>  'meetings#continue', :via => [:get], :as => :continue_meeting
   match '/templates/create' => 'templates#create', :via => :post
-  patch 'attendees/create/' => 'attendees#create', :via => :post
+  patch '/attendees/create' => 'attendees#create', :via => :post
   post '/attendees/create' => 'attendees#create', :via => :post
 
   resources :meetings do
@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   root 'meetings#index'
 
   resources :attendees do
+    get "delete"
+  end 
+  
+  resources :notes do
     get "delete"
   end  
 

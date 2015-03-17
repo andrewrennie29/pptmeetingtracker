@@ -1,1 +1,32 @@
-<p> User Form Here
+<div class="form-group">
+<%= form_for notes, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
+	
+	
+	<div class="control-group">
+				  <%= label :notetype, :class => 'control-label' %>
+				  <div class="controls">
+				    <%= text_field_tag :notetype %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :notetag, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field_tag :notetag %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :details, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field_tag :details %>
+				  </div>
+				</div>
+				<div class="control-group">
+				  <%= label :assignedto, class: 'control-label' %>
+				  <div class="controls">
+				    <%= text_field_tag :assignedto %>
+				  </div>
+				</div>
+ 
+	<%= f.submit "Save", :id => 'post_comment' %>
+<% end %>
+		</div>

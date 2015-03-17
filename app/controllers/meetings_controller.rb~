@@ -9,6 +9,8 @@ respond_to :html, :js
 
       @meeting = Meeting.find_by_id(session[:activemeetingid])
 			
+			@note=Notes.create(:meetingid => session[:activemeetingid], :notetype => 'test', :notetag => 'test')
+			
     end
 
   end
@@ -29,7 +31,7 @@ respond_to :html, :js
     @meetings = Meeting.all
     @meeting = Meeting.create(meeting_params)
     session[:activemeetingid] = @meeting.id
-    session[:meetingtype] = @meeting.meetingtype
+    session[:activemeetingtype] = @meeting.meetingtype
 			
   end
 

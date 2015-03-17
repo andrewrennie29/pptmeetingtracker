@@ -36,6 +36,8 @@ respond_to :html, :js
 			
 			@attendees = Attendees.where('meetingid = ?', session[:activemeetingid])
 			
+			render 'attendees/attendees'
+			
 		end
 
   end
