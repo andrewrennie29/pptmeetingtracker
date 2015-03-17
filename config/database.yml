@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: Querythis1
+  password: pipass3.1415
   
 
 development:

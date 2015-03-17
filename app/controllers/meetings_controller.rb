@@ -13,6 +13,8 @@ respond_to :html, :js
 			
 			@note=Notes.create(:meetingid => session[:activemeetingid], :notetype => 'test', :notetag => 'test')
 			
+			session[:viewattendees]=true
+			
     end
 
   end
@@ -74,7 +76,11 @@ respond_to :html, :js
   def continue
     @fcs=Meeting.select(:fc).distinct
   end
-
+	
+	def toggleattendees
+		session[:viewattendees] = !session[:viewattendees]
+		#render 'attendees/attendees'
+	end
 private
   def meeting_params
     params.require(:meeting).permit(:fc, :meetingtype, :meetingdate, :batchid)
