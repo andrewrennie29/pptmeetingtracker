@@ -10,7 +10,7 @@
 
 <div class="jumbotron">
   <h1>PPT Meeting Tracker</h1>
-  <p>Welcome to the PPT Meeting Tracker. This is a tool to capture actions from the various labour planning meetings that occur across each of the UK FCs each week.</p>
+  <p>Welcome to the PPT Meeting Tracker. This is a tool to capture actions from the various labour planning meetings that occur across each of the EU FCs each week.</p>
   <p><%= link_to "Start New Meeting", new_meeting_path, remote: true, class: "btn btn-primary btn-lg" %>  <%= link_to "Continue Meeting", continue_meeting_path, remote: true, class: "btn btn-primary btn-lg" %>  <%= link_to "Setup New Template", new_template_path, remote: true, class: "btn btn-primary btn-lg" %></p>
 </div>
 
@@ -42,20 +42,31 @@
 
 <% end %>
 
-<div class='col-md-12'>
-	<h4><a data-toggle="collapse" href="#attendeestoggle" aria-expanded="false" aria-controls="attendeestoggle">
-  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Attendees</h4>
-</a>
-		<div class="collapse" id="attendeestoggle">
-		<%= render "attendees/attendees" %>
-		</div>
+<div class="row">
+	<div class='col-md-12'>
+		<%= render partial: 'notes/form', locals: {notes: @note} %>
+	</div>
 </div>
-<br></br>
+<p>
+<div class="row">
+	<div class='col-md-12'>
+		<div class="panel panel-info">	
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" href="#attendeestoggle" aria-expanded="false" aria-controls="attendeestoggle">
+					<span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Attendees</a>
+				</h4>
+			</div>
+					<div class="collapse" id="attendeestoggle">
+						<%= render "attendees/attendees" %>
+					</div>
+		</div> <!-- Panel -->
+	</div><!-- col-md-12 -->
+</div>
 
-<div class='col-md-12'>
-	<h5>Add a note</h5>
-	<%= render partial: 'notes/form', locals: {notes: @note} %>
-</div>
+
+<%= render "notes/notes" %>
+
 <% end %>
 
 <div id="meeting-modal" class="modal fade">

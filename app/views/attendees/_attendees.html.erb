@@ -1,29 +1,39 @@
-<div class='col-md-6'>
-
+<div class="panel-body">
 <%= form_tag('/attendees/create', remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
-		<div class="form-group form-group-sm">
-		
-		<table class="table table-condensed">
-		
-    <% unless @attendees.nil? %>
-		  <% @attendees.each do |a| %>
-		  <tr>
-					<td class='col-sm-1'><%= check_box_tag a.id, a.attendance, {class: 'form-control'} %> <%= a.dept %></td>
+	<div class="form-group form-group-sm">
 
-					<td class='col-sm-1'><%= check_box_tag a.id, a.proxy, {class: 'form-control'} %> Proxy</td>
+		<% unless @attendees.nil? %>
 
-					<td class='col-sm-4'><%= text_field_tag a.id, a.attendees, {class: 'form-control', placeholder: 'Attendees'} %></td>
-     	</tr>
-   		<% end %>
-   	</table>
-   	
+			<% @attendees.each do |a| %>
+				<div class="row">
+					<div class="col-xs-2">
+						<div class="btn-group btn-group-xs" data-toggle="buttons">
+							<label class="btn btn-default active">
+								<input type="radio" name="options" id="option1" autocomplete="off" checked> Attended
+							</label>
+							<label class="btn btn-default">
+								<input type="radio" name="options" id="option2" autocomplete="off"> Proxy
+							</label>
+							<label class="btn btn-default">
+								<input type="radio" name="options" id="option3" autocomplete="off"> Absent
+							</label>
+						</div>
+					</div>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" placeholder=<%= a.dept %> aria-describedby="basic-addon1">
+					</div>	
+				</div>
+			<% end %>
+
 		<% else %>
-		
+
 			<h4>Please generate your attendees</h4>
-		
+			
 		<% end %>
-		<br>
-    <%= submit_tag "Save Attendees", class: "btn btn-primary btn-sm" %></br>
-		</div>
+	</div>
+</div>	
+
+<div class="panel-footer"><%= submit_tag "Save Attendees", class: "btn btn-primary btn-sm" %></div>
+
 <% end %>
-</div>
+

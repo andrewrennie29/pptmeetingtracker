@@ -1,32 +1,28 @@
-<div class="form-group">
+
 <%= form_for notes, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
-	
-	
-	<div class="control-group">
-				  <%= label :notetype, :class => 'control-label' %>
-				  <div class="controls">
-				    <%= text_field_tag :notetype %>
-				  </div>
-				</div>
-				<div class="control-group">
-				  <%= label :notetag, class: 'control-label' %>
-				  <div class="controls">
-				    <%= text_field_tag :notetag %>
-				  </div>
-				</div>
-				<div class="control-group">
-				  <%= label :details, class: 'control-label' %>
-				  <div class="controls">
-				    <%= text_field_tag :details %>
-				  </div>
-				</div>
-				<div class="control-group">
-				  <%= label :assignedto, class: 'control-label' %>
-				  <div class="controls">
-				    <%= text_field_tag :assignedto %>
-				  </div>
-				</div>
- 
-	<%= f.submit "Save", :id => 'post_comment' %>
+
+  <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+  
+  <div class="form-group form-group-sm">
+    <label for="exampleInputName2">notetype</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group form-group-sm">
+    <label for="exampleInputEmail2">notetag</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+   <div class="form-group form-group-sm">
+    <label for="exampleInputEmail2">details</label>
+    <input type="selection" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+   <div class="form-group form-group-sm">
+    <label for="exampleInputEmail2">assignedto</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <div class="form-group form-group-sm">
+    <label for="exampleInputEmail2">duedate</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+
 <% end %>
-		</div>
+
