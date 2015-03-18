@@ -1,22 +1,22 @@
-<div class='col-md-8'>
+<div class='col-md-6'>
 
 <%= form_tag('/attendees/create', remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
-
+		<div class="form-group form-group-sm">
+		
+		<table class="table table-condensed">
+		
     <% unless @attendees.nil? %>
 		  <% @attendees.each do |a| %>
-		  
-				<div class="input-group">
+		  <tr>
+					<td class='col-sm-1'><%= check_box_tag a.id, a.attendance, {class: 'form-control'} %> <%= a.dept %></td>
 
-					<span class="input-group-addon" id="labelattendance"><%= a.dept %>
-					<%= check_box_tag :attendance, true, {class: 'form-control'} %></span>
+					<td class='col-sm-1'><%= check_box_tag a.id, a.proxy, {class: 'form-control'} %> Proxy</td>
 
-					<span class="input-group-addon" id="labelproxy">Proxy
-					<%= check_box_tag :proxy, false, {class: 'form-control'} %></span>
-
-					<%= text_field_tag :attendees, a.attendees, {class: 'form-control', placeholder: 'Attendees'} %>
-				</div>
-   
+					<td class='col-sm-4'><%= text_field_tag a.id, a.attendees, {class: 'form-control', placeholder: 'Attendees'} %></td>
+     	</tr>
    		<% end %>
+   	</table>
+   	
 		<% else %>
 		
 			<h4>Please generate your attendees</h4>
@@ -24,5 +24,6 @@
 		<% end %>
 		<br>
     <%= submit_tag "Save Attendees", class: "btn btn-primary btn-sm" %></br>
+		</div>
 <% end %>
 </div>

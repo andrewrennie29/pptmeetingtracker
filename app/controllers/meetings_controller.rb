@@ -78,8 +78,12 @@ respond_to :html, :js
   end
 	
 	def toggleattendees
-		session[:viewattendees] = !session[:viewattendees]
-		#render 'attendees/attendees'
+		if session[:viewattendees].nil?
+			session[:viewattendees]='show'
+		else
+			session[:viewattendees]=nil
+		end
+		redirect_to '/'
 	end
 private
   def meeting_params

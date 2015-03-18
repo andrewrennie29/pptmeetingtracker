@@ -43,7 +43,7 @@
 <% end %>
 
 <div class='col-md-12'>
-
+session[viewattendees]= <%= session[:viewattendees] %>
 	<% if session[:viewattendees] == true %>
 		<h4><span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span> <%= link_to "Attendees", toggleattendees_path, remote: true %></h4>
 		<%= render "attendees/attendees" %>
