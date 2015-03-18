@@ -43,17 +43,14 @@
 <% end %>
 
 <div class='col-md-12'>
-session[viewattendees]= <%= session[:viewattendees] %>
-	<% if session[:viewattendees] == true %>
-		<h4><span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span> <%= link_to "Attendees", toggleattendees_path, remote: true %></h4>
+	<h4><a data-toggle="collapse" href="#attendeestoggle" aria-expanded="false" aria-controls="attendeestoggle">
+  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Attendees</h4>
+</a>
+		<div class="collapse" id="attendeestoggle">
 		<%= render "attendees/attendees" %>
-	<% else %>
-		<h4><span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Attendees</h4>
-	<% end %>
+		</div>
 </div>
 <br></br>
-
-
 
 <div class='col-md-12'>
 	<h5>Add a note</h5>
