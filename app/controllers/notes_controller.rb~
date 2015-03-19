@@ -1,14 +1,15 @@
 class NotesController < ApplicationController
-
+	
+	def index
+		@categories=Templates.where('meetingtype' = sessions[:activemeetingtype])
+	end
+	
   def new
     @note = Note.new
   end
   
   def create
     note=Note.new
-
-    flash[:notice] = "Your comment was added."
-    redirect_to article_path(article)
   end
 
 end

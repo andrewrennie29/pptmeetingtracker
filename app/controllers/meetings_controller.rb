@@ -13,7 +13,9 @@ respond_to :html, :js
 			
 			@note=Notes.create(:meetingid => session[:activemeetingid], :notetype => 'test', :notetag => 'test')
 			
-			session[:viewattendees]=true
+			@categories=Templates.where("notecategory='Categories' and meetingtype = ?", session[:activemeetingtype])
+		
+			@notes=Notes.where('meetingid = ?', session[:activemeetingid])
 			
     end
 

@@ -13,7 +13,9 @@ respond_to :html, :js
 			
 			@note=Notes.create(:meetingid => session[:activemeetingid], :notetype => 'test', :notetag => 'test')
 			
-			session[:viewattendees]=true
+			@categories=Templates.where("notecategory='Categories' and meetingtype = ?", @meeting.meetingtype)
+		
+			@notes=Notes.where('meetingid = ?', session[:activemeetingid])
 			
     end
 
@@ -78,10 +80,10 @@ respond_to :html, :js
   end
 	
 	def toggleattendees
-		if session[:viewattendees] == true
-			session[:viewattendees]=false
+		if session[:viewattendees].nil?
+			session[:viewattendees]='show'
 		else
-			session[:viewattendees]=true
+			session[:viewattendees]=nil
 		end
 		redirect_to '/'
 	end
