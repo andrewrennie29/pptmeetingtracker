@@ -25,9 +25,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 <% unless session[:activemeetingid].nil? %> <li class="active"><a href="#"><strong><%= @meeting.fc %></strong> <small><%= @meeting.meetingtype %></small></a></li>
-<li><a href="/meetings/endmeeting"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> End Meeting</a></li> 
+<li><a href="/meetings/endmeeting"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> End Meeting</a></li></ul>
 <% end %>
-        
+	<ul class="nav navbar-nav navbar-right">
+        <li><a href="#">About</a></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
