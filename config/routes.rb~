@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   match '/templates/create' => 'templates#create', :via => :post
   patch '/attendees/create' => 'attendees#create', :via => :post
   post '/attendees/create' => 'attendees#create', :via => :post
-	patch '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
+	match '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
+	post '/notes/create' => 'notes#create', :via => :post
 	
   resources :meetings do
     get "delete"

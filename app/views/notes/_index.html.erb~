@@ -12,17 +12,33 @@
 			</div>
 			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				<div class="panel-body">
-
+					
+					<table class="table table-condensed">
+					<th col-md-1>Status</th>
+					<th col-md-5>Details</th>
+					<th col-md-1>Assigned To</th>
+					<th col-md-1>Due Date</th>
 					<% notes.each do |n| %>
 
 						<% if n.notetype == c.notedetails %> 
 
-							notes will be listed here
+							<tr>
+							
+							<td><span class="label label-<%= case n.notetag
+																	 when 'Action' then 'danger'
+																	 when 'Follow Up' then 'warning'
+																	 when 'Info' then 'info'
+																	 end %>"><%= n.notetag %><span></td>
+							<td><%= n.details %></td>
+							<td><%= n.assignedto %></td>
+							<td><%= n.duedate %></td>
+							
+							</tr>
 
 						<% end %>
 
 					<% end %>   
-
+					</table>
 				</div>
 			</div>
 		</div>

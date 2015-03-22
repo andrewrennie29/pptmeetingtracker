@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch '/attendees/create' => 'attendees#create', :via => :post
   post '/attendees/create' => 'attendees#create', :via => :post
 	match '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
+	post '/notes/new' => 'notes#create', :via => :post
 	
   resources :meetings do
     get "delete"
