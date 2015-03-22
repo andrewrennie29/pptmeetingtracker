@@ -1,22 +1,33 @@
 <div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
-  
-  <%= @categories.each do |c| %>
-  
+
+	<% categories.each do |c| %>
+
 		<div class="panel panel-default">
-		  <div class="panel-heading" role="tab" id="heading<%= c.notedetails %>">
-		    <h4 class="panel-title">
-		      <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= c.notedetails %>" aria-expanded="false" aria-controls="collapse<%= c.notedetails %>">
-		        <%= c.notedetails %>
-		      </a>
-		    </h4>
-		  </div>
-		  <div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
-		    <div class="panel-body">
-		     	<%= c.notedetails %> notes will be listed here
-		    </div>
-		  </div>
+			<div class="panel-heading" role="tab" id="heading<%= c.notedetails %>">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= c.notedetails %>" aria-expanded="true" aria-controls="collapse<%= c.notedetails %>">
+					<%= c.notedetails %>
+					</a>
+				</h4>
+			</div>
+			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
+				<div class="panel-body">
+
+					<% notes.each do |n| %>
+
+						<% if n.notetype == c.notedetails %> 
+
+							notes will be listed here
+
+						<% end %>
+
+					<% end %>   
+
+				</div>
+			</div>
 		</div>
-	
+
 	<% end %>  
 
+</div>
 </div>

@@ -44,7 +44,7 @@
 
 <div class="row">
 	<div class='col-md-12'>
-		<%= render partial: 'notes/form', locals: {notes: @note} %>
+		<%= render partial: 'notes/form', locals: { note: @note } %>
 	</div>
 </div>
 <p>
@@ -65,7 +65,7 @@
 </div>
 
 
-<%= render 'notes/index' %>
+<%= render partial: 'notes/index', locals: { categories: @categories, notes: @notes }  %>
 
 <% end %>
 

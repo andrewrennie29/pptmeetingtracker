@@ -2,21 +2,22 @@
 <%= form_for notes, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
 
   <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+ 
+  <div class="form-group form-group-sm">
+    <select class="form-control" id="notetag">
+    <option>Action</option>
+    <option>Follow Up</option>
+    <option>Info</option>
+  </select>
+  </div>
+  <div class="form-group form-group-sm">
+		<%= f.collection_select :notetype, @categories, :notedetails, :notedetails, { class: "form-control" } %>
+  </div>
    <div class="form-group form-group-sm">
-    <label for="exampleInputEmail2">details</label>
-    <input type="selection" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>  
-  <div class="form-group form-group-sm">
-    <label for="exampleInputName2">notetype</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-  </div>
-  <div class="form-group form-group-sm">
-    <label for="exampleInputEmail2">notetag</label>
-    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>
+    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Add a meeting note">
+  </div> 
 	<div class="form-group form-group-sm">
-    <label for="exampleInputEmail2">assignedto</label>
-    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+    <%= f.collection_select :id, @attendees, :dept, :dept, { class: "form-control" } %>
   </div>
   <div class="form-group form-group-sm">
     <label for="exampleInputEmail2">duedate</label>
