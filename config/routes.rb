@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   match '/meetings/endmeeting' =>  'meetings#endmeeting', :via => [:get], :as => :endmeeting
   match '/meetings/continue' =>  'meetings#continue', :via => [:get], :as => :continue_meeting
   match '/templates/create' => 'templates#create', :via => :post
-  patch '/attendees/create' => 'attendees#create', :via => :post
+  post '/attendees/update' => 'attendees#update', :via => :post
   post '/attendees/create' => 'attendees#create', :via => :post
 	match '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
 	post '/notes/new' => 'notes#create', :via => :post
+	
 	
   resources :meetings do
     get "delete"

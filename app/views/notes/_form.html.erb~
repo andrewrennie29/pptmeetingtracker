@@ -4,19 +4,19 @@
   <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 	<%= f.hidden_field :meetingid, :value => session[:activemeetingid] %>
   <div class="form-group form-group-sm">
-    <%= f.select :notetag, [['Action'],['Follow Up'],['Info']], { :class => "form-control" } %>
+    <%= f.select :notetag, [['Action'],['Follow Up'],['Info']], {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>
   </div>
   <div class="form-group form-group-sm">
-		<%= f.collection_select :notetype, @categories, :notedetails, :notedetails, { class: 'form-control' } %>
+		<%= f.collection_select :notetype, @categories, :notedetails, :notedetails, {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>
   </div>
    <div class="form-group form-group-sm">
     <%= f.text_field :details, { :class => 'form-control', :placeholder => 'Add a meeting note' } %>
   </div> 
 	<div class="form-group form-group-sm">
-    <%= f.collection_select :assignedto, @attendees, :dept, :dept, { :class => 'form-control' } %>
+    <%= f.collection_select :assignedto, @attendees, :dept, :dept, {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>
   </div>
   <div class="form-group form-group-sm">
-		<div class='input-group date' id='datetimepicker1'>
+		<div class="input-group input-group-sm" id='datetimepicker1'>
 		<%= f.text_field :duedate %>
 		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 		</span>	

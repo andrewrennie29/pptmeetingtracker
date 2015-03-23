@@ -1,26 +1,27 @@
 <div class="panel-body">
-<%= form_tag('/attendees/create', remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
+<%= form_tag('/attendees/update', remote: true, html: { class: "form-inline", style: "display:inline;" }) do %>
 	<div class="form-group form-group-sm">
 
 		<% unless @attendees.nil? %>
 
 			<% @attendees.each do |a| %>
 				<div class="row">
+					<%= hidden_field_tag 'attendees[' + a.id.to_s + '][id][]', a.id  %>
 					<div class="col-xs-2">
-						<div class="btn-group btn-group-xs" data-toggle="buttons">
+						<div class="btn-group btn-group-xs"	 data-toggle="buttons">
 							<label class="btn btn-default active">
-								<input type="radio" name="options" id="option1" autocomplete="off" checked> Attended
+								<input type="radio" name="attendees[<%= a.id %>][attendance][]" id="option1" value="Attended" autocomplete="off" checked> Attended
 							</label>
 							<label class="btn btn-default">
-								<input type="radio" name="options" id="option2" autocomplete="off"> Proxy
+								<input type="radio" name="attendees[<%= a.id %>][attendance][]" id="option2" value="Proxy" autocomplete="off"> Proxy
 							</label>
 							<label class="btn btn-default">
-								<input type="radio" name="options" id="option3" autocomplete="off"> Absent
+								<input type="radio" name="attendees[<%= a.id %>][attendance][]" id="option3" value="Absent" autocomplete="off"> Absent
 							</label>
 						</div>
 					</div>
 					<div class="col-xs-3">
-						<input type="text" class="form-control" placeholder=<%= a.dept %> aria-describedby="basic-addon1">
+						<input type="text" name="attendees[<%= a.id %>][name][]" class="form-control" placeholder=<%= a.dept %> aria-describedby="basic-addon1">
 					</div>	
 				</div>
 			<% end %>

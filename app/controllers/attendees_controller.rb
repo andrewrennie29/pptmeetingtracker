@@ -70,10 +70,13 @@ respond_to :html, :js
   end
 
   def update
-    @attendees = Attendee.all
-    @attendee = Attendee.find(params[:id])
     
-    @attendee.update_attributes(attendee_params)
+    params[:attendees].each do |a|
+    
+    	@attendee=Attendees.find_by_id(a.id)
+    
+    end
+    
   end
 
   def delete
@@ -84,19 +87,6 @@ respond_to :html, :js
     @attendees = Attendee.all
     @attendee = Attendee.find(params[:id])
     @attendee.destroy
-  end
-
-  def generateattendees
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'GM')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'Inbound Ops')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'Outbound Ops')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'HR')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'Finance')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'PPT')
-    @attendee = Attendee.create(:meetingid => session[:activemeetingid], :dept => 'Others')
-  
-    redirect_to '/'
-
   end
 
 private
