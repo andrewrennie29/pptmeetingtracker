@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
 	
+respond_to :html, :js
+	
 	def index
 		@categories=Templates.where('meetingtype = ?', sessions[:activemeetingtype])
 		@notes=Notes.where('meetingid = ?', session[:activemeetingid])
