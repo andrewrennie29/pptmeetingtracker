@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1><%= @meeting.fc %> <small><%= @meeting.meetingtype %> </small></h1>
+  <h1><%= @meeting.fc %> <small><%= @meeting.meetingtype %> | <%= @meeting.meetingdate.strftime('%B ' + @meeting.meetingdate.day.ordinalize + ', %Y') %></small></h1>
 </div>
 <% render "attendees" %>
 

@@ -79,14 +79,18 @@ respond_to :html, :js
     @fcs=Meeting.select(:fc).distinct
   end
 	
-	def toggleattendees
-		if session[:viewattendees].nil?
-			session[:viewattendees]='show'
-		else
-			session[:viewattendees]=nil
-		end
-		redirect_to '/'
+	def review
+	
+		@meeting = Meeting.find_by_id(params[:meetingid])
+			
+		@attendees = Attendees.where('meetingid = ?', params[:meetingid])
+			
+		@categories=Templates.where("notecategory='Categories' and meetingtype = ?", @meeting.meetingtype)			
+					
+		@notes=Notes.where('meetingid = ?', params[:meetingid])
+	
 	end
+	
 private
   def meeting_params
     params.require(:meeting).permit(:fc, :meetingtype, :meetingdate, :batchid)

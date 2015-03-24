@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/attendees/create' => 'attendees#create', :via => :post
 	match '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
 	post '/notes/new' => 'notes#create', :via => :post
-	
+	match '/meetings/review/:meetingid' => 'meetings#review', :via =>  [:get], :as => :reviewmeeting
 	
   resources :meetings do
     get "delete"
