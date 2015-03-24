@@ -1,0 +1,1 @@
+$("#notesaccordion").html("<%= escape_javascript(render 'notes/index', locals: { categories: @categories, notes: @notes } ) %>");

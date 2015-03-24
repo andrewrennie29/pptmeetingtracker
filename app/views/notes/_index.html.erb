@@ -1,5 +1,5 @@
 <div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
-
+	
 	<% categories.each do |c| %>
 
 		<div class="panel panel-default">
@@ -10,14 +10,16 @@
 					</a>
 				</h4>
 			</div>
-			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
+			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse-in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				<div class="panel-body">
 					
+					<div class="col-md-9">
+					
 					<table class="table table-condensed">
-					<th col-md-1>Status</th>
-					<th col-md-5>Details</th>
-					<th col-md-1>Assigned To</th>
-					<th col-md-1>Due Date</th>
+					<th class="col-md-1">Status</th>
+					<th class="col-md-5">Details</th>
+					<th class="col-md-1">Assigned To</th>
+					<th class="col-md-1">Due Date</th>
 					<% notes.each do |n| %>
 
 						<% if n.notetype == c.notedetails %> 
@@ -39,6 +41,8 @@
 
 					<% end %>   
 					</table>
+					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -13,7 +13,10 @@ respond_to :html, :js
   
   def create
     @note=Notes.create(note_params)
-    render partial: 'notes/index'
+    
+    @categories=Templates.where("notecategory='Categories' and meetingtype = ?", session[:activemeetingtype])			
+					
+		@notes=Notes.where('meetingid = ?', session[:activemeetingid])
   end
   
 private

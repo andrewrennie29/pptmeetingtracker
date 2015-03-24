@@ -71,9 +71,21 @@ respond_to :html, :js
 
   def update
     
-    params[:attendees].each do |a|
+    params[:attendees].each do |k,v|
+    	
+    	case v["attendance"]
+    	when "Attended"
+    		attended = true
+    		proxied = false
+    	when "Proxy"
+    		attended = false 
+    		proxied = true
+    	when "Absent"
+    		attended = false
+    		proxied = false
+    	end
     
-    	@attendee=Attendees.find_by_id(params[:id])
+    	Attendees.update(v["id"], :attendance => attended, :proxy => proxied, :attendees => v["name"])
     
     end
     
