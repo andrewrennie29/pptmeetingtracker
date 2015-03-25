@@ -1,0 +1,53 @@
+<div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
+	
+	<% categories.each do |c| %>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading<%= c.notedetails %>">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= c.notedetails %>" aria-expanded="true" aria-controls="collapse<%= c.notedetails %>">
+					<%= c.notedetails %>
+					</a>
+				</h4>
+			</div>
+			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
+				<div class="panel-body">
+					
+					<div class="col-md-9">
+					
+					<table class="table table-condensed">
+					<th class="col-md-1">Status</th>
+					<th class="col-md-5">Details</th>
+					<th class="col-md-1">Assigned To</th>
+					<th class="col-md-1">Due Date</th>
+					<% notes.each do |n| %>
+
+						<% if n.notetype == c.notedetails %> 
+
+							<tr>
+							
+							<td><span class="label label-<%= case n.notetag
+																	 when 'Action Required' then 'danger'
+																	 when 'Follow Up' then 'warning'
+																	 when 'Info' then 'info'
+																	 end %>"><%= link_to if n.complete == true "Complete" else n.notetag end, completenote_path(n.id), remote: true %><span></td>
+							<td><%= n.details %></td>
+							<td><%= n.assignedto %></td>
+							<td><%= n.duedate %></td>
+							
+							</tr>
+
+						<% end %>
+
+					<% end %>   
+					</table>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+	<% end %>  
+
+</div>
+</div>

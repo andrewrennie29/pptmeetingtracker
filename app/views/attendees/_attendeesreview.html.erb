@@ -1,0 +1,19 @@
+<div class="list-group">
+
+		<% unless @attendees.nil? %>
+
+			<% @attendees.each do |a| %>
+				<a href="#" class="list-group-item"><h5 class="list-group-item-heading"><span class="glyphicon glyphicon-<%= case
+						when a.attendance
+							'ok-circle'
+						when a.proxy
+							'record'
+						else
+							'remove-circle'
+						end %>" aria-hidden="true"></span> <%= a.dept %></h5>
+				<p class="list-group-item-text"><%= a.attendees %></p></a>
+			<% end %>
+			
+		<% end %>
+</div>
+
