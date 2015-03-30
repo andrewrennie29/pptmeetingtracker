@@ -24,7 +24,7 @@
 	</div><!-- col-md-12 -->
 </div>
 
-<%= render partial: 'notes/index', locals: { categories: @categories, notes: @notes }  %>
+<%= render partial: 'notes/indexreview', locals: { categories: @categories, notes: @notes }  %>
 
 </div> <!-- span12 -->
 

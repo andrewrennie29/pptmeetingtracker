@@ -1,0 +1,24 @@
+<div class="modal-header">
+
+<h4><%= @note.details %>
+<p><small><%= @note.assignedto %>   <span class="label label-<%= case @note.notetag
+																	 when 'Action' then 'danger'
+																	 when 'Follow Up' then 'warning'
+																	 when 'For Info' then 'info'
+																	 end %>"><%= @note.notetag %>
+</span></small></h4></p>
+
+<p></p>
+<%= render "newcomment" %>
+
+</div>
+
+<div class="modal-body">
+
+<%= render partial: 'comments', locals: { comments: @comments, note: @note }  %>
+
+</div>
+  
+<div class="modal-footer">
+  <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+</div>

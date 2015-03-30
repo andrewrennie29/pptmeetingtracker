@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
 	def create
 	
 		Comments.create(comment_params)
-		session[:activeuser] = params[:enteredby]
-		
+	
 	end
 	
 	private

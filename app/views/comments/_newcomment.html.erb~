@@ -1,0 +1,14 @@
+<%= form_for @comment, url: new_comment_path, remote: true, html: { class: "form-inline", style: "display:inline;" } do |f| %>
+
+  <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+	<%= f.hidden_field :noteid, :value => params[:id] %>
+	<%= f.hidden_field :meetingid, :value => @note.meetingid %>
+  <div class="form-group form-group-sm">
+    <%= f.text_field :enteredby, { :value => session[:activeuser], :class => 'form-control', :placeholder => 'Comment entered by' } %>
+  </div>
+  <div class="form-group form-group-sm">
+    <%= f.text_field :comment, { :class => 'form-control', :placeholder => 'Add comments' } %>
+  </div>
+
+<% end %>
+

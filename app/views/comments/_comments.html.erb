@@ -1,0 +1,20 @@
+<% if comments.count == 0 %>
+
+<h5>No comments, add some above.</h5>
+
+<% else %>
+
+<dl>
+
+	<% comments.each do |c| %>
+
+		
+  <dt><%= c.enteredby %> at <%= c.created_at %></dt>
+  <dd><%= c.comment %></dd>
+
+
+	<% end %>
+
+</dl>
+
+<% end %>

@@ -44,7 +44,7 @@
 									
 								<% end %>
 							</td>
-							<td> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>		<%= n.details %></td>
+							<td> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= n.details %></td>
 							<td><%= n.assignedto %></td>
 							<td><%= n.duedate %></td>
 							

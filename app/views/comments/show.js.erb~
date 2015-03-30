@@ -1,0 +1,2 @@
+$("#inner-comments-modal").html("<%= escape_javascript(render 'new') %>");
+$("#comments-modal").modal("show");

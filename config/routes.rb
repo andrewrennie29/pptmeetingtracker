@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 	post '/meetings/setrecallid' => 'meetings#setrecallid', :via => :post
 	match '/update_meetingtypes' => 'meetings#update_meetingtypes', :via => :get	
 	match '/update_meetingdates' => 'meetings#update_meetingdates', :via => :get
+	match '/comments/show/:id' => 'comments#show', :via => [:get], :as => :showcomments
+	match '/comments/delete/:id' => 'comments#delete', :via => [:get], :as => :deletecomment
+	post '/comments/new' => 'comments#create', :via => :post
 	
   resources :meetings do
     get "delete"
@@ -27,8 +30,6 @@ Rails.application.routes.draw do
     get "delete"
   end
 
-  root 'meetings#index'
-
   resources :attendees do
     get "delete"
   end 
@@ -36,6 +37,12 @@ Rails.application.routes.draw do
   resources :notes do
     get "delete"
   end  
+
+  resources :comments do
+    get "delete"
+  end  
+
+  root 'meetings#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

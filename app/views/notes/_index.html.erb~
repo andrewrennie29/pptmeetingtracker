@@ -27,9 +27,9 @@
 							<tr>
 							
 							<td><span class="label label-<%= case n.notetag
-																	 when 'Action Required' then 'danger'
+																	 when 'Action' then 'danger'
 																	 when 'Follow Up' then 'warning'
-																	 when 'Info' then 'info'
+																	 when 'For Info' then 'info'
 																	 end %>"><%= n.notetag %><span></td>
 							<td><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= n.details %></td>
 							<td><%= n.assignedto %></td>
