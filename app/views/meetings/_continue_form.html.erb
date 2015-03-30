@@ -5,7 +5,7 @@
     <div class="control-group">
       <%= label :fc_select, 'FC' %>
       <div class="controls">
-       <%= collection_select :fc, :fc, @fcs, :fc, :fc, {}, {value: 'EDI4', required: 'true', autofocus: 'false', class: 'form-control'} %>
+       <%= collection_select :fc, :fc, @fcs, :fc, :fc, {}, { required: 'true', autofocus: 'false', class: 'form-control'} %>
       </div>
     </div>
     
@@ -19,7 +19,7 @@
     <div class="control-group">
       <%= label :meetingdate, 'Date' %>
       <div class="controls">
-       <%= select_tag :meetingdate, options_for_select(@meetingdates.collect { |meetingdate| [meetingdate.batchid, meetingdate.id] }, 1), { id: 'meetingdates_select', required: 'true', autofocus: 'false', class: 'form-control'} %>
+       <%= select_tag :meetingdate, options_for_select(@meetingdates.collect { |meetingdate| [meetingdate.batchid, meetingdate.batchid] }, 1), { id: 'meetingdates_select', required: 'true', autofocus: 'false', class: 'form-control'} %>
       </div>
     </div>
     

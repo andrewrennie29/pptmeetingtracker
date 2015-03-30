@@ -105,14 +105,14 @@ respond_to :html, :js
 	end
 	
 	def update_meetingtypes
-    @meetingtypes = Meeting.where("fc = ?", params[:fc_id]).group("meetingtype")
+    @meetingtypes = Meeting.where("fc = ?", params[:fc_id]).group("meetingtype ASC")
     respond_to do |format|
       format.js
     end
   end
 
 	def update_meetingdates
-    @meetingdates = Meeting.where("fc = ? and meetingtype = ?", params[:fc_id], params[:meetingtype_id]).group("batchid")
+    @meetingdates = Meeting.where("fc = ? and meetingtype = ?", params[:fc_id], params[:meetingtype_id]).group("batchid DESC")
     respond_to do |format|
       format.js
     end
@@ -120,10 +120,9 @@ respond_to :html, :js
 	
 	def setrecallid
 	
-		@meeting=Meeting.where("fc = ? and meetingtype = ? and meetingdate = ?", params[:fc]["fc"], params[:meetingtype]["meetingtype"], params[:meetingdate]["meetingdate"])
+		@meeting=Meeting.where("fc = ? and meetingtype = ? and batchid = ?", params[:fc]["fc"], params[:meetingtype], params[:meetingdate])
 		session[:activemeetingid] = @meeting.first.id
 		session[:activemeetingtype] = @meeting.first.meetingtype
-    redirect_to '/'
 		
 	end
 	
