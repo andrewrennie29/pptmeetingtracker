@@ -78,7 +78,7 @@ respond_to :html, :js
     		attended = true
     		proxied = false
     	when "Proxy"
-    		attended = false 
+    		attended = false
     		proxied = true
     	when "Absent"
     		attended = false

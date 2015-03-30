@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 	post '/notes/new' => 'notes#create', :via => :post
 	match '/meetings/review/:meetingid' => 'meetings#review', :via =>  [:get], :as => :reviewmeeting
 	match '/notes/complete/:id' => 'notes#complete', :via => :get, :as => :completenote	
+	post '/meetings/setrecallid' => 'meetings#setrecallid', :via => :post
+	match '/update_meetingtypes' => 'meetings#update_meetingtypes', :via => :get	
+	match '/update_meetingdates' => 'meetings#update_meetingdates', :via => :get
 	
   resources :meetings do
     get "delete"

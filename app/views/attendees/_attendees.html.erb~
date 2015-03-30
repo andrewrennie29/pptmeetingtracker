@@ -9,19 +9,19 @@
 					<%= hidden_field_tag 'attendees[' + a.id.to_s + '][id]', a.id  %>
 					<div class="col-xs-2">
 						<div class="btn-group btn-group-xs"	 data-toggle="buttons">
-							<label class="btn btn-default active">
-								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option1" value="Attended" autocomplete="off" checked> Attended
+							<label class="btn btn-default<% if a.attendance %> active<% end %>">
+								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option1" value="Attended" autocomplete="off" checked = <%= a.attendance %> > Attended
 							</label>
-							<label class="btn btn-default">
-								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option2" value="Proxy" autocomplete="off"> Proxy
+							<label class="btn btn-default<% if a.proxy %> active<% end %>">
+								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option2" value="Proxy" autocomplete="off" checked = <%= a.proxy %> > Proxy
 							</label>
-							<label class="btn btn-default">
-								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option3" value="Absent" autocomplete="off"> Absent
+							<label class="btn btn-default<% if a.attendance == false && a.proxy == false  %> active<% end %>">
+								<input type="radio" name="attendees[<%= a.id %>][attendance]" id="option3" value="Absent" autocomplete="off" <% if a.attendance == false && a.proxy == false  %> checked <% end %> > Absent
 							</label>
 						</div>
 					</div>
 					<div class="col-xs-3">
-						<input type="text" name="attendees[<%= a.id %>][name]" class="form-control" placeholder=<%= a.dept %> aria-describedby="basic-addon1">
+						<input type="text" name="attendees[<%= a.id %>][name]" class="form-control" placeholder=<%= a.dept %> value="<%= a.attendees %>" aria-describedby="basic-addon1">
 					</div>	
 				</div>
 			<% end %>

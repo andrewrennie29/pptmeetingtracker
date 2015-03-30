@@ -1,0 +1,2 @@
+module MeetingRecallHelper
+end

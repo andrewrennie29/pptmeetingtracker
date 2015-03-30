@@ -1,5 +1,7 @@
 class AttendeesController < ApplicationController
 
+belongs_to :meeting
+
 respond_to :html, :js
 
   def index
@@ -78,7 +80,7 @@ respond_to :html, :js
     		attended = true
     		proxied = false
     	when "Proxy"
-    		attended = false 
+    		attended = false
     		proxied = true
     	when "Absent"
     		attended = false

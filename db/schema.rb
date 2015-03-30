@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324124013) do
+ActiveRecord::Schema.define(version: 20150328135335) do
 
   create_table "attendees", force: true do |t|
     t.integer  "meetingid",                  null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150324124013) do
     t.integer  "noteid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "enteredby"
   end
 
   create_table "meetings", force: true do |t|

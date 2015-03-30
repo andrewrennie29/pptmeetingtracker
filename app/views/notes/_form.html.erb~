@@ -4,7 +4,7 @@
   <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 	<%= f.hidden_field :meetingid, :value => session[:activemeetingid] %>
   <div class="form-group form-group-sm">
-    <%= f.select :notetag, [['Action'],['Follow Up'],['Info']], {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>
+    <%= f.select :notetag, [['Action Required'],['Follow Up'],['Info']], {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>
   </div>
   <div class="form-group form-group-sm">
 		<%= f.collection_select :notetype, @categories, :notedetails, :notedetails, {}, {required: 'true', autofocus: 'false', class: 'form-control'} %>

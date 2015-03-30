@@ -87,6 +87,12 @@
 	</div>
 </div>
 
+<div id="comments-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div id="inner-template-modal" class="modal-content"></div>
+	</div>
+</div>
+
 </div> <!-- span12 -->
 
 </div> <!-- row -->

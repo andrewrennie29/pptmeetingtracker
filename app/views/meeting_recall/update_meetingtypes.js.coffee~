@@ -1,0 +1,2 @@
+$("#meetingtype_meetingtype").empty()
+  .append("<%= escape_javascript(render(:partial => @meetingtypes)) %>")

@@ -35,17 +35,28 @@ respond_to :html, :js
 
   def create
     @meetings = Meeting.all
-    @meeting = Meeting.create(meeting_params)
-    session[:activemeetingid] = @meeting.id
-    session[:activemeetingtype] = @meeting.meetingtype
+    @meeting = Meeting.where("fc = ? and meetingtype = ? and meetingdate = ?", params[:meeting]["fc"], params[:meeting]["meetingtype"], params[:meeting]["meetingdate"])
     
-    @attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", session[:activemeetingtype])
+    if @meeting.count>0
+    	
+    	session[:activemeetingid] = @meeting.first.id
+    	session[:activemeetingtype] = @meeting.first.meetingtype
+    
+    else
+    
+		  @meeting = Meeting.create(meeting_params)
+		  session[:activemeetingid] = @meeting.id
+		  session[:activemeetingtype] = @meeting.meetingtype
+		  
+		  @attendeetemplates = Templates.select(:notedetails).where("notecategory = 'Attendees' and meetingtype = ?", session[:activemeetingtype])
 			
-			@attendeetemplates.each do |a|
+				@attendeetemplates.each do |a|
 			
-				@attendee=Attendees.create(meetingid: session[:activemeetingid], dept: a.notedetails)
+					@attendee=Attendees.create(meetingid: session[:activemeetingid], dept: a.notedetails)
 			
-			end
+				end
+		
+		end
 			
   end
 
@@ -76,7 +87,9 @@ respond_to :html, :js
   end
 
   def continue
-    @fcs=Meeting.select(:fc).distinct
+    @fcs=Meeting.where("fc is not null and fc <> ''").group("fc")
+    @meetingtypes=Meeting.group("meetingtype ASC")
+    @meetingdates=Meeting.group("batchid DESC")
   end
 	
 	def review
@@ -89,6 +102,29 @@ respond_to :html, :js
 					
 		@notes=Notes.where('meetingid = ?', params[:meetingid])
 	
+	end
+	
+	def update_meetingtypes
+    @meetingtypes = Meeting.where("fc = ?", params[:fc_id]).group("meetingtype")
+    respond_to do |format|
+      format.js
+    end
+  end
+
+	def update_meetingdates
+    @meetingdates = Meeting.where("fc = ? and meetingtype = ?", params[:fc_id], params[:meetingtype_id]).group("batchid")
+    respond_to do |format|
+      format.js
+    end
+  end
+	
+	def setrecallid
+	
+		@meeting=Meeting.where("fc = ? and meetingtype = ? and meetingdate = ?", params[:fc]["fc"], params[:meetingtype]["meetingtype"], params[:meetingdate]["meetingdate"])
+		session[:activemeetingid] = @meeting.first.id
+		session[:activemeetingtype] = @meeting.first.meetingtype
+    redirect_to '/'
+		
 	end
 	
 private

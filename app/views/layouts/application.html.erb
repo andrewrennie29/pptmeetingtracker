@@ -24,7 +24,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-<% unless session[:activemeetingid].nil? %> <li class="active"><a href="#"><strong><%= @meeting.fc %></strong> <small><%= @meeting.meetingtype %></small></a></li>
+<% unless session[:activemeetingid].nil? %> <li class="active"><a href="/"><strong><%= @meeting.fc %></strong> <small><%= @meeting.meetingtype %></small></a></li>
+<li><a href="/meetings/review/<%= session[:activemeetingid] %>"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Permalink</a></li>
 <li><a href="/meetings/endmeeting"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> End Meeting</a></li></ul>
 <% end %>
 	<ul class="nav navbar-nav navbar-right">

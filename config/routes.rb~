@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 	match '/meetings/toggleattendees' => 'meetings#toggleattendees', :via => [:get], :as => :toggleattendees
 	post '/notes/new' => 'notes#create', :via => :post
 	match '/meetings/review/:meetingid' => 'meetings#review', :via =>  [:get], :as => :reviewmeeting
-	match '/notes/complete/:id' => 'notes#complete', :via => :post, :as => :completenote	
+	match '/notes/complete/:id' => 'notes#complete', :via => :get, :as => :completenote	
+	post '/meetings/setrecallid' => 'meetings#setrecallid', :via => :post
+	match '/update_meetingtypes' => 'meeting_recall#update_meetingtypes', :via => :get	
+	match '/update_meetingdates' => 'meeting_recall#update_meetingdates', :via => :get
 	
   resources :meetings do
     get "delete"

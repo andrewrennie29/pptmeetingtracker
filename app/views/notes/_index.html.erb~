@@ -10,10 +10,10 @@
 					</a>
 				</h4>
 			</div>
-			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse-in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
+			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				<div class="panel-body">
 					
-					<div class="col-md-8">
+					<div class="col-md-9">
 					
 					<table class="table table-condensed">
 					<th class="col-md-1">Status</th>
@@ -31,7 +31,7 @@
 																	 when 'Follow Up' then 'warning'
 																	 when 'Info' then 'info'
 																	 end %>"><%= n.notetag %><span></td>
-							<td><%= n.details %></td>
+							<td><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= n.details %></td>
 							<td><%= n.assignedto %></td>
 							<td><%= n.duedate %></td>
 							

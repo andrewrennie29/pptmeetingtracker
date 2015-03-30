@@ -12,8 +12,8 @@
 			</div>
 			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				<div class="panel-body">
-					
-					<div class="col-md-9">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
 					
 					<table class="table table-condensed">
 					<th class="col-md-1">Status</th>
@@ -26,12 +26,25 @@
 
 							<tr>
 							
-							<td><span class="label label-<%= case n.notetag
-																	 when 'Action Required' then 'danger'
+							<td><% if n.complete == true %>
+								<%= link_to completenote_path(n.id), remote: true do %>
+									<span class="label label-success">Complete</span>
+								<% end %>
+								<% else %>
+									
+									<%= link_to completenote_path(n.id), remote: true, :title => "Click to Complete" do %>
+									
+										<span class="label label-<%= case n.notetag
+																	 when 'Action' then 'danger'
 																	 when 'Follow Up' then 'warning'
-																	 when 'Info' then 'info'
-																	 end %>"><%= link_to n.notetag, completenote_path(n.id), remote: true %><span></td>
-							<td><%= n.details %></td>
+																	 when 'For Info' then 'info'
+																	 end %>"><%= n.notetag %></span>
+									
+									<% end %>
+									
+								<% end %>
+							</td>
+							<td> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= n.details %></td>
 							<td><%= n.assignedto %></td>
 							<td><%= n.duedate %></td>
 							
@@ -42,7 +55,7 @@
 					<% end %>   
 					</table>
 					</div>
-					
+					<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div>
