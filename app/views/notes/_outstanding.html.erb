@@ -25,7 +25,7 @@
 																						when 'Follow Up' then 'warning'
 																						when 'For Info' then 'info'
 																						end %>"><%= n.notetag %><span></td>
-					<td><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %>  <strong><%= n.notetype %></strong> <%= n.details %></td>
+					<td><div class="col-md-11"><strong><%= n.notetype %></strong> <%= n.details %></div><div class="col-md-1"><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %></div></td>
 					<td><%= n.assignedto %></td>
 					<td><%= n.duedate %></td>
 
