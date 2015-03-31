@@ -89,7 +89,7 @@
 
 <div id="comments-modal" class="modal fade">
 	<div class="modal-dialog">
-		<div id="inner-template-modal" class="modal-content"></div>
+		<div id="inner-comments-modal" class="modal-content"></div>
 	</div>
 </div>
 

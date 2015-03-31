@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
 	
 	def create
 	
-		Comments.create(comment_params)
-		session[:activeuser] = params[:enteredby]
-		
+		@comment=Comments.create(comment_params)
+		session[:activeuser] = @comment.enteredby
+
 	end
 	
 	private

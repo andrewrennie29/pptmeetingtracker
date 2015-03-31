@@ -17,6 +17,8 @@ respond_to :html, :js
 					
 			@notes=Notes.where('meetingid = ?', session[:activemeetingid])
 			
+			@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
+			
     end
 
   end
@@ -89,7 +91,7 @@ respond_to :html, :js
   def continue
     @fcs=Meeting.where("fc is not null and fc <> ''").group("fc")
     @meetingtypes=Meeting.group("meetingtype ASC")
-    @meetingdates=Meeting.group("meetingdate DESC")
+    @meetingdates=Meeting.group("batchid DESC")
   end
 	
 	def review
@@ -105,14 +107,14 @@ respond_to :html, :js
 	end
 	
 	def update_meetingtypes
-    @meetingtypes = Meeting.where("fc = ?", params[:fc_id]).group("meetingtype")
+    @meetingtypes = Meeting.where("fc = ?", params[:fc_id]).group("meetingtype ASC")
     respond_to do |format|
       format.js
     end
   end
 
 	def update_meetingdates
-    @meetingdates = Meeting.where("fc = ? and meetingtype = ?", params[:fc_id], params[:meetingtype_id]).group("batchid")
+    @meetingdates = Meeting.where("fc = ? and meetingtype = ?", params[:fc_id], params[:meetingtype_id]).group("batchid DESC")
     respond_to do |format|
       format.js
     end
@@ -120,10 +122,9 @@ respond_to :html, :js
 	
 	def setrecallid
 	
-		@meeting=Meeting.where("fc = ? and meetingtype = ? and meetingdate = ?", params[:fc]["fc"], params[:meetingtype]["meetingtype"], params[:meetingdate]["meetingdate"])
+		@meeting=Meeting.where("fc = ? and meetingtype = ? and batchid = ?", params[:fc]["fc"], params[:meetingtype], params[:meetingdate])
 		session[:activemeetingid] = @meeting.first.id
 		session[:activemeetingtype] = @meeting.first.meetingtype
-    redirect_to '/'
 		
 	end
 	

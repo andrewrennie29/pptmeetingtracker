@@ -17,6 +17,8 @@ respond_to :html, :js
 					
 			@notes=Notes.where('meetingid = ?', session[:activemeetingid])
 			
+			@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
+			
     end
 
   end
@@ -101,6 +103,8 @@ respond_to :html, :js
 		@categories=Templates.where("notecategory='Categories' and meetingtype = ?", @meeting.meetingtype)			
 					
 		@notes=Notes.where('meetingid = ?', params[:meetingid])
+		
+		@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
 	
 	end
 	

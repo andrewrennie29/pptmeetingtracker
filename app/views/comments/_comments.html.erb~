@@ -1,18 +1,18 @@
 <% if comments.count == 0 %>
 
-<p><h5>No comments, add some above.</h5></p>
+<h5>No comments, add some above.</h5>
 
 <% else %>
+
+
 
 <dl>
 
 	<% comments.each do |c| %>
 
-		
-  <dt><%= c.enteredby %> at <%= c.created_at %></dt>
-  <dd><%= c.comment %></dd>
-
-
+	<dt><small><%= c.enteredby %> at <%= c.created_at.asctime %></small></dt>
+	<dd><%= c.comment %></dd>	
+  
 	<% end %>
 
 </dl>

@@ -1,5 +1,7 @@
 <div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
 	
+	<%= render partial: 'notes/outstanding', locals: { notes: @outstanding }) %>
+	
 	<% categories.each do |c| %>
 
 		<div class="panel panel-default">
@@ -31,7 +33,7 @@
 																	 when 'Follow Up' then 'warning'
 																	 when 'For Info' then 'info'
 																	 end %>"><%= n.notetag %><span></td>
-							<td><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= n.details %></td>
+							<td><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %>  <%= n.details %></td>
 							<td><%= n.assignedto %></td>
 							<td><%= n.duedate %></td>
 							

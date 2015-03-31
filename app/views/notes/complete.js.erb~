@@ -1,1 +1,1 @@
-$("#headingAttrition").html("<%= escape_javascript(render 'notes/indexreview', categories: @categories, notes: @notes ) %>");
+$("#notesaccordion").html("<%= escape_javascript(render 'notes/indexreview', categories: @categories, notes: @notes ) %>");

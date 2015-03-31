@@ -1,5 +1,7 @@
 <div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
 	
+	<%= render partial: 'notes/outstanding', locals: { notes: @outstanding } %>
+	
 	<% categories.each do |c| %>
 
 		<div class="panel panel-default">

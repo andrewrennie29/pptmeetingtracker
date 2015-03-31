@@ -8,11 +8,9 @@
 
 	<% comments.each do |c| %>
 
-		
-  <dt><%= c.enteredby %> at <%= c.created_at %></dt>
-  <dd><%= c.comment %></dd>
-
-
+	<dt><small><%= c.enteredby %> at <%= c.created_at.asctime %></small></dt>
+	<dd><%= c.comment %></dd>	
+  
 	<% end %>
 
 </dl>

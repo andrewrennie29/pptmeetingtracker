@@ -1,1 +1,1 @@
-$("#inner-comments-modal").html("<%= escape_javascript(render 'comments/view', categories: @categories, notes: @notes ) %>");
+$("#comments-modal").html("<%= escape_javascript(render 'comments/view/comments[:noteid]', comments: @comments, note: @note ) %>");

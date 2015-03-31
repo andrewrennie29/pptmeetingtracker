@@ -30,6 +30,8 @@ respond_to :html, :js
   	@categories=Templates.where("notecategory='Categories' and meetingtype = ?", @meeting.meetingtype)			
 					
 		@notes=Notes.where('meetingid = ?', @meeting.id)
+		
+		@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
   
   end
   
