@@ -1,0 +1,32 @@
+<div class="panel-body">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+
+		<table class="table table-condensed">
+			<th class="col-md-2">Status</th>
+			<th class="col-md-6">Details</th>
+			<th class="col-md-2">Assigned To</th>
+			<th class="col-md-2">Due Date</th>
+
+			<% fillnotes.each do |n| %>
+
+				<tr>
+
+				<td><span class="label label-<%=	case n.notetag
+																					when 'Action' then 'danger'
+																					when 'Follow Up' then 'warning'
+																					when 'For Info' then 'info'
+																					end %>"><%= n.notetag %><span></td>
+				<td><div class="col-md-11"><%= n.details %></div><div class="col-md-1"><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %></div></td>
+				<td><%= n.assignedto %></td>
+				<td><%= n.duedate %></td>
+
+				</tr>
+
+
+
+			<% end %>   
+		</table>
+	</div>
+	<div class="col-md-1"></div>
+</div> <!-- Panel Body -->
