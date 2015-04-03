@@ -13,9 +13,9 @@
 
 </div>
 
-<div class="modal-body">
+<div id="modal-comments" class="modal-body">
 
-<%= render partial: 'comments', locals: { comments: @comments, note: @note }  %>
+<%= render partial: 'comments', locals: { comments: @comments }  %>
 
 </div>
   

@@ -10,8 +10,11 @@ class CommentsController < ApplicationController
 	
 	def create
 	
-				@comment=Comments.create(comment_params)
-				session[:activeuser] = @comment.enteredby
+		@comment=Comments.create(comment_params)
+		
+		@comments=Comments.where("noteid = ?", @comment.noteid)
+		
+		session[:activeuser] = @comment.enteredby
 
 	end
 	

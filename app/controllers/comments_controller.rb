@@ -11,6 +11,11 @@ class CommentsController < ApplicationController
 	def create
 	
 		@comment=Comments.create(comment_params)
+		
+		@note=Notes.find_by_id(@comment.noteid)
+		
+		@comments=Comments.where("noteid = ?", @comment.noteid)
+		
 		session[:activeuser] = @comment.enteredby
 
 	end
