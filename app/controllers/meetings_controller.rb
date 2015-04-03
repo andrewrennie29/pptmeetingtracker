@@ -129,6 +129,14 @@ respond_to :html, :js
 		session[:activemeetingtype] = @meeting.first.meetingtype
 		
 	end
+
+	def latest
+	
+		@meeting=Meeting.where("fc = ? and meetingtype = ?", params[:fc], params[:meetingtype].sub('_',' ').titleize).last
+		
+		redirect_to reviewmeeting_path(@meeting.id)
+		
+	end
 	
 private
   def meeting_params
