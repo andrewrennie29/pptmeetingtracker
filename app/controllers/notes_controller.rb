@@ -22,6 +22,8 @@ respond_to :html, :js
 		
 		@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
 		
+		@comments=Comments.all
+		
   end
   
   def complete
@@ -31,12 +33,14 @@ respond_to :html, :js
   	Notes.update(params[:id], :complete => !@note.complete)
   	
   	@meeting=Meeting.find_by_id(@note.meetingid)
-  	
-  	@categories=Templates.where("notecategory='Categories' and meetingtype = ?", @meeting.meetingtype)			
+		
+    @categories=Templates.where("notecategory='Categories' and meetingtype = ?", session[:activemeetingtype])			
 					
-		@notes=Notes.where('meetingid = ?', @meeting.id)
+		@notes=Notes.where('meetingid = ? and notetype = ?', session[:activemeetingid], @note.notetype)
 		
 		@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
+		
+		@comments=Comments.all
   
   end
   

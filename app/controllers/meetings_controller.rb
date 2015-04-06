@@ -19,6 +19,8 @@ respond_to :html, :js
 			
 			@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
 			
+			@comments=Comments.all
+			
     end
 
   end
@@ -105,6 +107,8 @@ respond_to :html, :js
 		@notes=Notes.where('meetingid = ?', params[:meetingid])
 		
 		@outstanding=Notes.joins("left join meetings on meetings.id = notes.meetingid").where("notes.complete = false and notes.notetag in ('Action','Follow Up') and meetings.fc = ? and notes.meetingid < ?", @meeting.fc, session[:activemeetingid])
+		
+		@comments=Comments.all
 	
 	end
 	

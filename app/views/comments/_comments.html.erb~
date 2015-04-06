@@ -1,4 +1,4 @@
-<div id"modal-comments">
+<div id="modal-comments">
 
 <% if comments.count == 0 %>
 

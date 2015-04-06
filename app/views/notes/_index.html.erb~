@@ -14,7 +14,7 @@
 			</div>
 			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				
-				<%= render partial: 'notes/fillaccordion', locals: { notes: notes.where("notetype = ?", c.notedetails) } %>
+				<%= render partial: 'notes/fillaccordion', locals: { fillnotes: notes.where("notetype = ?", c.notedetails), comments: @comments } %>
 				
 			</div>
 		</div>

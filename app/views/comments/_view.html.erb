@@ -1,5 +1,5 @@
 <div class="modal-header">
-
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h4><%= @note.details %>
 <p><small><%= @note.assignedto %>   <span class="label label-<%= case @note.notetag
 																	 when 'Action' then 'danger'
@@ -8,10 +8,8 @@
 																	 end %>"><%= @note.notetag %>
 </span></small></h4></p>
 
-<p></p>
-<%= render "newcomment" %>
-
 </div>
+
 
 <div class="modal-body">
 
@@ -20,5 +18,5 @@
 </div>
   
 <div class="modal-footer">
-  <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+  <%= render "newcomment" %>
 </div>

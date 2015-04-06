@@ -1,6 +1,6 @@
 <div class="panel-group" id="notesaccordion" role="tablist" aria-multiselectable="true">
 	
-	<%= render partial: 'notes/outstanding', locals: { notes: @outstanding } %>
+	<%= render partial: 'notes/outstanding', locals: { notes: @outstanding, comments: @comments } %>
 	
 	<% categories.each do |c| %>
 
@@ -14,7 +14,7 @@
 			</div>
 			<div id="collapse<%= c.notedetails %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= c.notedetails %>">
 				
-				<%= render partial: 'notes/fillaccordion', locals: { fillnotes: notes.where("notetype = ?", c.notedetails) } %>
+				<%= render partial: 'notes/fillaccordion', locals: { fillnotes: notes.where("notetype = ?", c.notedetails), comments: @comments } %>
 				
 			</div>
 		</div>

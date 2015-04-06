@@ -24,10 +24,21 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      
 <% unless session[:activemeetingid].nil? %> <li class="active"><a href="/"><strong><%= @meeting.fc %></strong> <small><%= @meeting.meetingtype %></small></a></li>
 <li><a href="/meetings/review/<%= session[:activemeetingid] %>"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Permalink</a></li>
-<li><a href="/meetings/endmeeting"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> End Meeting</a></li></ul>
+<li><a href="/meetings/endmeeting"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> End Meeting</a></li>
 <% end %>
+
+<li class="dropdown">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Latest Meetings <span class="caret"></span></a>
+	<ul class="dropdown-menu" role="menu">
+		
+	</ul>
+</li>
+
+</ul>
+
 	<ul class="nav navbar-nav navbar-right">
         <li><a href="#">About</a></li>
       </ul>

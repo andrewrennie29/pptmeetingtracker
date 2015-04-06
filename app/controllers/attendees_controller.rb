@@ -86,6 +86,8 @@ respond_to :html, :js
     	end
     
     	Attendees.update(v["id"], :attendance => attended, :proxy => proxied, :attendees => v["name"])
+    ``
+    	flash[:success] = 'Attendee details saved'
     
     end
     

@@ -1,1 +1,1 @@
-$("#collapse<%= @note.notetype %>").html("<%= escape_javascript(render 'notes/fillaccordion', fillnotes: @notes ) %>");
+$("#collapse<%= @note.notetype %>").html("<%= escape_javascript(render 'notes/fillaccordion', fillnotes: @notes, comments: @comments ) %>");

@@ -50,7 +50,7 @@
 									
 								<% end %>
 							</td>
-							<td><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %>  <%= n.details %></td>
+							<td><div class="col-md-11"><%= n.details %></div><div class="col-md-1"><%= link_to showcomments_path(n.id), remote: true do %><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><% end %></div></td>
 							<td><%= n.assignedto %></td>
 							<td><%= n.duedate %></td>
 							
