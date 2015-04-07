@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 	match '/comments/show/:id' => 'comments#show', :via => [:get], :as => :showcomments
 	match '/comments/delete/:id' => 'comments#delete', :via => [:get], :as => :deletecomment
 	post '/comments/new' => 'comments#create', :via => :post
-	match '/meetings/:fc/:meetingtype/latest' => 'meetings#latest', :via => [:get], :as => :latestmeeting
+	match '/meetings/:fc/:meetingtype/:batchid' => 'meetings#findameeting', :via => [:get], :as => :findameeting
 	
   resources :meetings do
     get "delete"

@@ -134,9 +134,19 @@ respond_to :html, :js
 		
 	end
 
-	def latest
-	
-		@meeting=Meeting.where("fc = ? and meetingtype = ?", params[:fc], params[:meetingtype].sub('_',' ').titleize).last
+	def findameeting
+		
+		if params[:batchid] == 'latest'
+		
+			@meeting=Meeting.where("fc = ? and meetingtype = ?", params[:fc], params[:meetingtype].sub('_',' ').titleize).last
+		
+		else
+			
+			batchid = "Labor Plan - " + (params[:batchid].to_date-params[:batchid].to_date.wday).strftime("%Y-%m-%d").to_s
+			
+			@meeting=Meeting.where("fc = ? and meetingtype = ? and batchid = ?", params[:fc], params[:meetingtype].sub('_',' ').titleize, batchid).last
+			
+		end
 		
 		redirect_to reviewmeeting_path(@meeting.id)
 		

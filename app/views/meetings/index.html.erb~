@@ -54,7 +54,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" href="#attendeestoggle" aria-expanded="false" aria-controls="attendeestoggle">
-					<span class="glyphicon glyphicon-expand" aria-hidden="true"></span> Attendees</a>
+					<span class="caret"></span> Attendees</a>
 				</h4>
 			</div>
 					<div class="collapse" id="attendeestoggle">
@@ -65,7 +65,7 @@
 </div>
 
 
-<%= render partial: 'notes/index', locals: { categories: @categories, notes: @notes }  %>
+<%= render partial: 'notes/index', locals: { categories: @categories, notes: @notes } %>
 
 <% end %>
 
